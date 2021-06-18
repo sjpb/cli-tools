@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+# e.g:
+# openstack hypervisor list --format csv --long | os-query.py 'Hypervisor Type'=ironic 'vCPUs Used'=0
+import sys, csv
+args = dict(a.split('=') for a in sys.argv[1:])
+reader = csv.DictReader(sys.stdin)
+for row in reader:
+    matches = [row[k] == v for (k, v) in args.items()]
+    if all(matches):
+        print(', '.join(row.values()))

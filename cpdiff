@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+# Interactively copy files left -> right using output from a recursive diff command.
+#
+# e.g.:
+#   $ diff -rq left/ right/
+#     Files /home/centos/nrel-slurm-app/ansible/adhoc/update-packages.yml and ./ansible/adhoc/update-packages.yml differ
+#   $ cpdiff Files /home/centos/nrel-slurm-app/ansible/adhoc/update-packages.yml and ./ansible/adhoc/update-packages.yml differ
+#
+diff $2 $4
+cp -i $2 $4
